@@ -1,8 +1,10 @@
 import React from 'react';
-import {View, Text, StyleSheet, TextInput, Image, TouchableOpacity } from 'react-native';
+import {View, Text, StyleSheet, TextInput, Image, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 function Login({ navigation }){
+    
     return(
+        <TouchableWithoutFeedback onPress={()=> Keyboard.dismiss}>
         <View style={styles.wrapper}>
             <Image
                 source={require('../../imgs/worklist.png')}
@@ -24,6 +26,7 @@ function Login({ navigation }){
             <Text style={styles.textLogin}>Login</Text>
         </TouchableOpacity>
         </View>
+        </TouchableWithoutFeedback>
     );
 }
 
