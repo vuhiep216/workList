@@ -6,14 +6,15 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  Alert,
 } from 'react-native';
 import data from '../../services/Works';
 import Header from '../../components/Header';
 
-function ItemList({ data }) {
+function ItemList({ navigation, data }) {
   return (
-    <TouchableOpacity onPress={() => Alert.alert('Take that')}>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('WorkDetail', { idWork: data.id })}
+    >
       <View style={styles.container}>
         <View style={styles.containerImage}>
           <Image
@@ -40,7 +41,7 @@ function Todolist({ navigation }) {
       <FlatList
         data={data}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <ItemList data={item}></ItemList>}
+        renderItem={({ item }) => <ItemList navigation={navigation} data={item}></ItemList>}
       ></FlatList>
     </View>
   );

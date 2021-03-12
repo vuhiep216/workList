@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import Users from '../../services/Users';
 import {
   View,
@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Keyboard,
-  Alert
+  Alert,
+  ScrollView,
 } from 'react-native';
 
 function Login({ navigation }) {
@@ -32,31 +33,30 @@ function Login({ navigation }) {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-      <View style={styles.wrapper}>
-        <Image
-          source={require('../../imgs/worklist.png')}
-          style={styles.image}
-        ></Image>
-        <TextInput
-          style={[styles.input, styles.username]}
-          placeholder='Username'
-          onChangeText={(text) => setUsername(text)}
-        ></TextInput>
-        <TextInput
-          style={[styles.input]}
-          placeholder='Password'
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry
-        ></TextInput>
-        <TouchableOpacity
-          style={styles.btnLogin}
-          onPress={handleLogin}
-        >
-        <Text style={styles.textLogin}>Login</Text>
-        </TouchableOpacity>
-      </View>
-    </TouchableWithoutFeedback>
+    <ScrollView>
+      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+        <View style={styles.wrapper}>
+          <Image
+            source={require('../../imgs/worklist.png')}
+            style={styles.image}
+          ></Image>
+          <TextInput
+            style={[styles.input, styles.username]}
+            placeholder='Username'
+            onChangeText={(text) => setUsername(text)}
+          ></TextInput>
+          <TextInput
+            style={[styles.input]}
+            placeholder='Password'
+            onChangeText={(text) => setPassword(text)}
+            secureTextEntry
+          ></TextInput>
+          <TouchableOpacity style={styles.btnLogin} onPress={handleLogin}>
+            <Text style={styles.textLogin}>Login</Text>
+          </TouchableOpacity>
+        </View>
+      </TouchableWithoutFeedback>
+    </ScrollView>
   );
 }
 
